@@ -52,11 +52,11 @@
   \end{columns}
 \end{frame}
 \note[itemize]{
-  \item we are not experts
-  \item but we are passionate about developer experience
-  \item and want to share our perspectives from our experiences building,
+  \item We are not experts
+  \item But we are passionate about developer experience
+  \item And want to share our perspectives from our experiences building,
     deploying, and maintaining applications
-  \item as your tech advisors, come to us with questions, we are happy to help
+  \item As your tech advisors, come to us with questions, we are happy to help
 }
 
 \subsection{Motivation for this talk}
@@ -73,13 +73,13 @@
   \end{displayquote}
 \end{frame}
 \note[itemize]{
-  \item an old adage states that a good craftsman should never blame his tools
-  \item therefore, a good craftsman should know his tools
-  \item working on a tech project is more than just knowing a technology or a
+  \item An old adage states that a good craftsman should never blame his tools
+  \item Therefore, a good craftsman should know his tools
+  \item Working on a tech project is more than just knowing a technology or a
     framework
-  \item it involves knowing how to integrate your work with the ecosystem
+  \item It involves knowing how to integrate your work with the ecosystem
     around it
-  \item thus, you need to know your tools, their capabilities, and their
+  \item Thus, you need to know your tools, their capabilities, and their
     limitations
 }
 
@@ -88,7 +88,7 @@
     \item Version Control
       \begin{itemize}
         \item Git
-        \item best practices
+        \item Best practices
       \end{itemize}
     \item Containerization
       \begin{itemize}
@@ -98,9 +98,9 @@
   \end{itemize}
 \end{frame}
 \note[itemize]{
-  \item you have probably heard of these tools before
-  \item if not, do not worry, that is what this talk is for
-  \item we want to focus on best practices for using these tools and how you
+  \item You have probably heard of these tools before
+  \item If not, do not worry, that is what this talk is for
+  \item We want to focus on best practices for using these tools and how you
     can incorporate them into your project
 }
 
@@ -110,18 +110,22 @@
 
 \begin{frame}{Version Control}
   \begin{itemize}
-    \item history tracking for files
-    \item no more saving multiple copies manually
-    \item changes can be committed and tracked by the VCS
-    \item modern VCS's can easily merge changesets (like you will need for your
-      projects)
+    \item History tracking for files
+      \begin{itemize}
+        \item No more saving multiple copies manually
+      \end{itemize}
+    \item Changes can be committed and tracked by the VCS
+    \item Modern VCS's can easily merge changesets
+      \begin{itemize}
+        \item as you will need for your projects
+      \end{itemize}
   \end{itemize}
 \end{frame}
 \note[itemize]{
-  \item every project should be using version control
-  \item aside from making collaboration easier, it allows you to view the
+  \item Every project should be using version control
+  \item Aside from making collaboration easier, it allows you to view the
     history of your own changes
-  \item helpful for identifying which changes introduced bugs
+  \item Helpful for identifying which changes introduced bugs
 }
 
 \begin{frame}{How did we get here?}
@@ -153,7 +157,7 @@
   \begin{itemize}
     \item Distributed version control system
       \begin{itemize}
-        \item multiple independent branches across computers
+        \item Multiple independent branches across computers
         \item No branch is inherently “more important” than the other
       \end{itemize}
     \item High industry adoption
@@ -164,10 +168,10 @@
   \end{itemize}
 \end{frame}
 \note[itemize]{
-  \item we highly encourage you to use Git
+  \item We highly encourage you to use Git
   \item Git makes merging easy
-  \item merging in non-distributed VCS is hard
-  \item anyone who has tried working with SVN or CVS knows this
+  \item Merging in non-distributed VCS is hard
+  \item Anyone who has tried working with SVN or CVS knows this
   \item Mercurial is also a DVCS, however usage is small compared to Git
 }
 
@@ -181,14 +185,14 @@
   \end{center}
 \end{frame}
 \note[itemize]{
-  \item understanding Git conceptually is important before you begin working
+  \item Understanding Git conceptually is important before you begin working
     with its commands
-  \item a Git repository is the collection of changes for a set of files
-  \item because Git is a DVCS, it has no concept of a central repo that
+  \item A Git repository is the collection of changes for a set of files
+  \item Because Git is a DVCS, it has no concept of a central repo that
     everyone must checkin code to
-  \item everyone has their own copy of the repository that they can clone to
+  \item Everyone has their own copy of the repository that they can clone to
     work off of
-  \item in practice, one of these copies of the repo will be designated the
+  \item In practice, one of these copies of the repo will be designated the
     central source of truth copy, typically called origin and hosted at an
     easily accessible location like GitHub or GitLab, and it will serve as the
     method to send changes between team members
@@ -200,10 +204,10 @@
   \end{center}
 \end{frame}
 \note[itemize]{
-  \item changes in Git are organized in the form of commits
-  \item a commit is conceptually a set of changed lines from an earlier commit
-  \item these commits form a directed acyclic graph which encompass all the
-    changes which have been checked in to a repository
+  \item Changes in Git are organized in the form of commits
+  \item A commit is conceptually a set of changed lines from an earlier commit
+  \item These commits form a directed acyclic graph which encompass all the
+    changes which have been committed to a repository
 }
 
 \begin{frame}{Workflow}
@@ -213,21 +217,26 @@
 \end{frame}
 \note[itemize]{
   \item Git is quite flexible and supports many workflows
-  \item some teams prefer more trunk based development, where everyone commits
+  \item Some teams prefer more trunk based development, where everyone commits
     to the same upstream origin branch, typically called master
     \begin{itemize}
       \item usually for small projects
     \end{itemize}
-  \item larger projects need a more scalable way to manage changes
-  \item typically will have a production, development, and feature branches
-  \item team members will work on their own features and merge them into the
+  \item Larger projects need a more scalable way to manage changes
+  \item Typically will have a production, development, and feature branches
+  \item Team members will work on their own features and merge them into the
     development branch when they are finished
-  \item use a flow that works best for you
+  \item Use a flow that works best for you
 }
 
 \begin{frame}{Git}
   \Huge Demo
 \end{frame}
+\note[itemize]{
+  \item basic git flow, add, commit, push
+  \item git branch flow
+  \item git merge
+}
 
 \subsection{Best practices}
 
@@ -247,7 +256,7 @@
 \end{frame}
 \note[itemize]{
   \item Too often I see \texttt{.DS\_Store} or \texttt{\_\_MACOSX} committed
-  \item those files should be ignored in your personal global
+  \item Those files should be ignored in your personal global
     \texttt{.gitignore}
 }
 
@@ -269,8 +278,69 @@
 \end{frame}
 \note[itemize]{
   \item Git provides many helpful commands to manage your work, and work with
-    others.
-  \item One can better leverage these tools by adhering to good conventions.
+    others
+  \item One can better leverage these tools by adhering to good conventions
+}
+
+\section{Containerization}
+
+\subsection{What is it}
+
+\begin{frame}{Containerization}
+  \begin{itemize}
+    \item The definitive way to deploy and manage workloads at scale
+    \item Began with the development of cgroups in the Linux kernel
+    \item Containers leverage cgroups to provide a virtualized OS to a process
+      \begin{itemize}
+        \item Distinct from a VM which provides virtualized hardware
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+\note[itemize]{
+  \item Cgroups provide a way to isolate processes based on CPU, memory, disk,
+    network, etc.
+  \item Containers were developed to manage workloads at scale, however, the
+    virtualized OS interface gives developers other benefits as well
+    \begin{itemize}
+      \item Easy development environment setup
+      \item Testing in environment before staging or production
+      \item No more it works on my machine
+      \item Easy process supervision
+    \end{itemize}
+}
+
+\begin{frame}{Brief history}
+  \begin{description}
+    \item[Cgroups] Google, 2006, Linux kernel feature to provide processes
+      isolation
+    \item[Mesos] Berkeley, 2009, distributed process manager
+    \item[Docker] 2013, both a container image format and runtime/engine
+    \item[Kubernetes] 2014, distributed container orchestration system
+  \end{description}
+\end{frame}
+\note[itemize]{
+  \item Cgroups isolate processes based on CPU, memory, disk, network, etc.
+  \item Mesos is a process manager for computer clusters, leverages cgroups
+  \item Docker is containerization for the masses with a toolchain for easily
+    creating and running containers
+  \item Kubernetes is a distributed container orchestration system with a
+    highly available, centralized scheduler
+}
+
+\begin{frame}{Why Docker?}
+  \begin{center}
+    \includegraphics[height=0.75cm]{assets/dockerlogo.png}
+  \end{center}
+  \begin{itemize}
+    \item Easy to work with containerization technology with wide support from
+      various platforms and tools
+    \item Toolchain includes everything from image creation to running
+      containers
+  \end{itemize}
+\end{frame}
+\note[itemize]{
+  \item Nomad is a great scheduler as well, though Docker's Open Container
+    Initiative spec is more popular
 }
 
 \end{document}
