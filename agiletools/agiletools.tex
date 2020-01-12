@@ -175,7 +175,7 @@
 
 \subsection{Conceptual overview}
 
-\begin{frame}{Conceptual overview: Distributed VCS}
+\begin{frame}{Distributed VCS}
   \begin{center}
     \includegraphics[width=\textwidth]{assets/gitdistributed.png}
   \end{center}
@@ -192,6 +192,85 @@
     central source of truth copy, typically called origin and hosted at an
     easily accessible location like GitHub or GitLab, and it will serve as the
     method to send changes between team members
+}
+
+\begin{frame}{Commit graph}
+  \begin{center}
+    \includegraphics[width=\textwidth]{assets/gitgraph.png}
+  \end{center}
+\end{frame}
+\note[itemize]{
+  \item changes in Git are organized in the form of commits
+  \item a commit is conceptually a set of changed lines from an earlier commit
+  \item these commits form a directed acyclic graph which encompass all the
+    changes which have been checked in to a repository
+}
+
+\begin{frame}{Workflow}
+  \begin{center}
+    \includegraphics[width=\textwidth]{assets/gitworkflow.png}
+  \end{center}
+\end{frame}
+\note[itemize]{
+  \item Git is quite flexible and supports many workflows
+  \item some teams prefer more trunk based development, where everyone commits
+    to the same upstream origin branch, typically called master
+    \begin{itemize}
+      \item usually for small projects
+    \end{itemize}
+  \item larger projects need a more scalable way to manage changes
+  \item typically will have a production, development, and feature branches
+  \item team members will work on their own features and merge them into the
+    development branch when they are finished
+  \item use a flow that works best for you
+}
+
+\begin{frame}{Git}
+  \Huge Demo
+\end{frame}
+
+\subsection{Best practices}
+
+\begin{frame}{.gitignore}
+  \begin{itemize}
+    \item Only source code should be checked in
+      \begin{itemize}
+        \item Do \textbf{not} commit build artifacts to your repo
+      \end{itemize}
+    \item When X is reproducible from Y, X does not need to be checked in 99\%
+      of the time.
+      \begin{itemize}
+        \item e.g. \texttt{node\_modules/} is reproducible from
+          \texttt{package-lock.json}
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+\note[itemize]{
+  \item Too often I see \texttt{.DS\_Store} or \texttt{\_\_MACOSX} committed
+  \item those files should be ignored in your personal global
+    \texttt{.gitignore}
+}
+
+\begin{frame}{More helpful Git}
+  \begin{itemize}
+    \item Commit \textbf{early} and \textbf{often}. Commits should be thought
+      of as an atomic unit of work.
+    \item Rebase with care. Feel free to rebase your own work that you have
+      locally. But, do \textbf{not} rebase public history. Doing so will
+      rewrite history for others, and Git will not be able to help you merge
+      changes.
+    \item \texttt{git bisect}. Binary search your history for a bug introducing
+      commit.
+    \item \texttt{git diff}, \texttt{git apply}, \texttt{git cherry-pick}.
+      These commands can help you with complex or out-of-tree merges if you
+      need it.
+    \item \texttt{git blame}. Find which commit added a particular line.
+  \end{itemize}
+\end{frame}
+\note[itemize]{
+  \item Git provides many helpful commands to manage your work, and work with
+    others.
+  \item One can better leverage these tools by adhering to good conventions.
 }
 
 \end{document}
