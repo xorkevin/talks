@@ -14,7 +14,7 @@
 \author{Kevin Wang \and Aidan Wolk}
 \year=2020\relax
 \month=01\relax
-\day=11\relax
+\day=23\relax
 \date{\today}
 \institute{DevX}
 \logo{\includegraphics[height=0.5cm]{assets/devxlogo.png}}
@@ -327,6 +327,8 @@
     highly available, centralized scheduler
 }
 
+\subsection{Docker}
+
 \begin{frame}{Why Docker?}
   \begin{center}
     \includegraphics[height=0.75cm]{assets/dockerlogo.png}
@@ -341,6 +343,78 @@
 \note[itemize]{
   \item Nomad is a great scheduler as well, though Docker's Open Container
     Initiative spec is more popular
+}
+
+\section{Docker}
+
+\subsection{Conceptual Overview}
+
+\begin{frame}{Containers}
+  \begin{center}
+    \includegraphics[width=\textwidth]{assets/dockercontainer.png}
+  \end{center}
+\end{frame}
+\note[itemize]{
+  \item Again, understanding the concepts behind Docker is an important
+    prerequisite to using the tool
+  \item This is the common image used to represent containers
+  \item Containers are isolated processes that are presented a virtualized view
+    of the OS
+  \item Again, this is distinct from VMs which are operating systems which are
+    presented a virtualized view of the hardware
+  \item Containers are far lighter as they do not run an OS per app
+}
+
+\begin{frame}{Workflow}
+  \begin{center}
+    \includegraphics[width=\textwidth]{assets/dockerworkflow.png}
+  \end{center}
+\end{frame}
+\note[itemize]{
+  \item Docker has a daemon which manages the building of images, and the
+    running of containers on a machine
+  \item Images are a blueprint of how to create a container
+  \item Containers are a running instance of an image
+  \item Images can be named, tagged by version, and published on Docker
+    registries
+  \item If you want to self-host a private registry, look into
+    \texttt{registry}
+}
+
+\begin{frame}{Docker}
+  \Huge DEMO
+\end{frame}
+\note[itemize]{
+  \item docker pull, docker run, psql into postgres
+    \begin{itemize}
+      \item expose port
+      \item volume for persistent data
+    \end{itemize}
+  \item docker-compose and docker-compose.yaml example
+  \item Dockerfile example packaging a Node app
+}
+
+\subsection{Best practices}
+
+\begin{frame}{Helpful Docker}
+  \begin{itemize}
+    \item Docker containers are ephemeral
+      \begin{itemize}
+        \item Docker containers are stateless (aside from volumes)
+        \item Do not expect data to persist by default
+      \end{itemize}
+    \item Infrastructure as code
+      \begin{itemize}
+        \item Docker is a large part of the IaC equation
+        \item Treating your platform and infra as something that can fail
+          allows you to be more resilient
+        \item Redeploys should take seconds of human interaction rather than
+          hours
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+\note[itemize]{
+  \item Again, Docker will help you the more you adhere to its conventions
 }
 
 \end{document}
