@@ -1,7 +1,7 @@
 *.html
 *.aux
-*.fls
 *.fdb_latexmk
+*.fls
 *.log
 *.nav
 *.out

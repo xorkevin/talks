@@ -5,9 +5,7 @@
 \usepackage{csquotes}
 \usepackage{hyperref}
 
-\ifdefined\NOTES
-  \setbeameroption{show only notes}
-\fi
+\setbeameroption{show notes on second screen}
 
 \title{Agile Development}
 \subtitle{Tools for development}
@@ -18,6 +16,15 @@
 \date{\today}
 \institute{DevX}
 \logo{\includegraphics[height=0.5cm]{assets/devxlogo.png}}
+
+\makeatletter
+\def\beamer@framenotesbegin{
+  % at beginning of slide
+  \usebeamercolor[fg]{normal text}
+  \gdef\beamer@noteitems{}
+  \gdef\beamer@notes{}
+}
+\makeatother
 
 \begin{document}
 
