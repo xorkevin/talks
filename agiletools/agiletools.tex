@@ -80,6 +80,8 @@
   \end{displayquote}
 \end{frame}
 \note[itemize]{
+  \item Often, developers are focused on new frameworks, languages, etc., but
+    not enough thought is given to the dev process
   \item An old adage states that a good craftsman should never blame his tools
   \item Therefore, a good craftsman should know his tools
   \item Working on a tech project is more than just knowing a technology or a
@@ -118,9 +120,6 @@
 \begin{frame}{Version Control}
   \begin{itemize}
     \item History tracking for files
-      \begin{itemize}
-        \item No more saving multiple copies manually
-      \end{itemize}
     \item Changes can be committed and tracked by the VCS
     \item Modern VCS's can easily merge changesets
       \begin{itemize}
@@ -129,10 +128,16 @@
   \end{itemize}
 \end{frame}
 \note[itemize]{
+  \item History tracking is important for projects
+    \begin{itemize}
+      \item Viewing a subset of changes allows you to easily locate bugs
+        instead of having to search the entire project
+    \end{itemize}
+  \item Storing history allows you to share those changes with others
+    \begin{itemize}
+      \item Allows multiple people to work on the same project
+    \end{itemize}
   \item Every project should be using version control
-  \item Aside from making collaboration easier, it allows you to view the
-    history of your own changes
-  \item Helpful for identifying which changes introduced bugs
 }
 
 \begin{frame}{How did we get here?}
@@ -145,14 +150,18 @@
   \end{description}
 \end{frame}
 \note[itemize]{
+  \item Common complaint is that VCS are complex and unintuitive
+    \begin{itemize}
+      \item Can be helpful to look at history, to give context, and understand
+        why these complexities were introduced
+    \end{itemize}
   \item Source code control system, one of the first software VCS, major
     upgrade over punch cards, kept track of single files, single user
   \item Revision control sytem, tracked diffs between versions
   \item Concurrent versions system, developed for MINIX development, can work
     across the network, centralized development
   \item Subversion, spiritual successor of CVS
-  \item Git, developed to maintain Linux development after Bitkeeper license
-    changes
+  \item Git, developed to maintain Linux development to address scalability
 }
 
 \subsection{Git}
@@ -175,11 +184,16 @@
   \end{itemize}
 \end{frame}
 \note[itemize]{
-  \item We highly encourage you to use Git
+  \item DVCS is designed to allow many people to work on the same project at
+    the same time
+  \item In a centralized VCS, there is only one copy of the project, and all
+    your changes are immediately made available to others
+  \item Hence only a few people can work on the same file at the same time
+  \item DVCS addresses this by having multiple copies of a project at the same
+    time
+  \item People can work on features independently of one another
   \item Git makes merging easy
-  \item Merging in non-distributed VCS is hard
-  \item Anyone who has tried working with SVN or CVS knows this
-  \item Mercurial is also a DVCS, however usage is small compared to Git
+  \item We highly encourage you to use Git
 }
 
 \section{Git}
@@ -192,11 +206,9 @@
   \end{center}
 \end{frame}
 \note[itemize]{
-  \item Understanding Git conceptually is important before you begin working
-    with its commands
-  \item A Git repository is the collection of changes for a set of files
-  \item Because Git is a DVCS, it has no concept of a central repo that
-    everyone must checkin code to
+  \item Understanding Git conceptually is important to gain an intuition of
+    what the commands do, and when to use them
+  \item A Git repository is a set of files and their history of changes
   \item Everyone has their own copy of the repository that they can clone to
     work off of
   \item In practice, one of these copies of the repo will be designated the
@@ -215,6 +227,8 @@
   \item A commit is conceptually a set of changed lines from an earlier commit
   \item These commits form a directed acyclic graph which encompass all the
     changes which have been committed to a repository
+  \item Important to note that in a DVCS, the commit graph is not linear;
+    changes can occur at the same time
 }
 
 \begin{frame}{Workflow}
@@ -223,7 +237,8 @@
   \end{center}
 \end{frame}
 \note[itemize]{
-  \item Git is quite flexible and supports many workflows
+  \item Git is quite flexible and has features to support many workflows
+  \item Branch is a label given to a particular path of commits
   \item Some teams prefer more trunk based development, where everyone commits
     to the same upstream origin branch, typically called master
     \begin{itemize}
@@ -241,8 +256,8 @@
 \end{frame}
 \note[itemize]{
   \item basic git flow, add, commit, push
-  \item git branch flow
-  \item git merge
+  \item clone, branch, pr flow
+  \item pr review merge flow
 }
 
 \subsection{Best practices}
@@ -269,21 +284,29 @@
 
 \begin{frame}{More helpful Git}
   \begin{itemize}
-    \item Commit \textbf{early} and \textbf{often}. Commits should be thought
-      of as an atomic unit of work.
-    \item Rebase with care. Feel free to rebase your own work that you have
-      locally. But, do \textbf{not} rebase public history. Doing so will
-      rewrite history for others, and Git will not be able to help you merge
-      changes.
-    \item \texttt{git bisect}. Binary search your history for a bug introducing
-      commit.
-    \item \texttt{git diff}, \texttt{git apply}, \texttt{git cherry-pick}.
-      These commands can help you with complex or out-of-tree merges if you
-      need it.
-    \item \texttt{git blame}. Find which commit added a particular line.
+    \item Commit \textbf{early} and \textbf{often}.
+    \item PRs should be \textbf{short} and \textbf{atomic}.
+    \item Use branch protection on GitHub.
+    \item Rebase with care.
+    \item \texttt{git diff} to view the changes between two commits.
+    \item Some less frequently used commands:
+      \begin{itemize}
+        \item \texttt{git bisect}
+        \item \texttt{git apply}, \texttt{git cherry-pick}
+        \item \texttt{git blame}
+      \end{itemize}
   \end{itemize}
 \end{frame}
 \note[itemize]{
+  \item Commits should be thought of as an atomic unit of work.
+  \item The longer a PR, the more difficult it is to review.
+  \item PRs should not introduce partial functionality that breaks live
+    features.
+  \item Branch protection allows you to enable rules such as requiring PRs to
+    be reviewed, and preventing direct merges to master.
+  \item Feel free to rebase your own work that you have locally. But, do
+    \textbf{not} rebase public history. Doing so will rewrite history for
+    others, and Git will not be able to help you merge changes.
   \item Git provides many helpful commands to manage your work, and work with
     others
   \item One can better leverage these tools by adhering to good conventions
