@@ -319,16 +319,16 @@
 \begin{frame}{Containerization}
   \begin{itemize}
     \item The definitive way to deploy and manage workloads at scale
-    \item Began with the development of cgroups in the Linux kernel
-    \item Containers leverage cgroups to provide a virtualized OS to a process
+    \item Modern container systems leverage cgroups in the Linux kernel
+    \item Containers provide a virtualized OS to a process
       \begin{itemize}
         \item Distinct from a VM which provides virtualized hardware
       \end{itemize}
   \end{itemize}
 \end{frame}
 \note[itemize]{
-  \item Cgroups provide a way to isolate processes based on CPU, memory, disk,
-    network, etc.
+  \item Containers provide a way to isolate processes based on CPU, memory,
+    disk, network, etc.
   \item Containers were developed to manage workloads at scale, however, the
     virtualized OS interface gives developers other benefits as well
     \begin{itemize}
@@ -370,10 +370,6 @@
       containers
   \end{itemize}
 \end{frame}
-\note[itemize]{
-  \item Nomad is a great scheduler as well, though Docker's Open Container
-    Initiative spec is more popular
-}
 
 \section{Docker}
 
@@ -387,7 +383,7 @@
 \note[itemize]{
   \item Again, understanding the concepts behind Docker is an important
     prerequisite to using the tool
-  \item This is the common image used to represent containers
+  \item This is the common image used to explain containers
   \item Containers are isolated processes that are presented a virtualized view
     of the OS
   \item Again, this is distinct from VMs which are operating systems which are
@@ -407,8 +403,8 @@
   \item Containers are a running instance of an image
   \item Images can be named, tagged by version, and published on Docker
     registries
-  \item If you want to self-host a private registry, look into
-    \texttt{registry}
+  \item If you want a private registry, look into ECR, the self-hosted
+    \texttt{registry}, etc.
 }
 
 \begin{frame}{Docker}
@@ -420,8 +416,8 @@
       \item expose port
       \item volume for persistent data
     \end{itemize}
-  \item docker-compose and docker-compose.yaml example
   \item Dockerfile example packaging a Node app
+  \item docker-compose and docker-compose.yaml example
 }
 
 \subsection{Best practices}
